@@ -1,0 +1,28 @@
+﻿@model Backend3.Models.QuizViewModel
+@{
+    ViewBag.Title = "Hello Quiz";
+}
+
+<h2>Quiz results</h2>
+
+<p>
+    <strong>Correct answers: </strong> @Model.CorrectAnswerCount / @Model.ArithmeticOperations.Count
+</p>
+<p>
+    <ol>
+        @if (Model.ArithmeticOperations != null)
+        {
+            for (int i = 0; i < Model.ArithmeticOperations.Count; i++)
+            {
+                if (Model.ArithmeticOperations[i].UserAnsweredCorrectly)
+                {
+                    <li>@Model.ArithmeticOperations[i].Operand1 @Model.ArithmeticOperations[i].OperationToShow @Model.ArithmeticOperations[i].Operand2 = @Model.ArithmeticOperations[i].UserAnswer</li>
+                }
+                else
+                {
+                    <li class="text-danger">@Model.ArithmeticOperations[i].Operand1 @Model.ArithmeticOperations[i].OperationToShow @Model.ArithmeticOperations[i].Operand2 = @Model.ArithmeticOperations[i].UserAnswer</li>
+                }
+            }
+        }
+    </ol>
+</p>
